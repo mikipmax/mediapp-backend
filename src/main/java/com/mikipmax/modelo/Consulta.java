@@ -1,5 +1,6 @@
 package com.mikipmax.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -36,7 +37,7 @@ public class Consulta extends EntidadBase {
     @Column(name = "fecha_y_hora_consulta", nullable = false)
     private LocalDateTime fechaYHoraConsulta;
     
-    @OneToMany
+    @OneToMany(mappedBy = "consulta", cascade = {CascadeType.ALL})
     private List<DetalleConsulta> listaDetallesConsulta;
     
 

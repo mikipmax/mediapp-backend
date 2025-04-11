@@ -2,19 +2,18 @@ package com.mikipmax.servicio;
 
 import com.mikipmax.modelo.Paciente;
 import com.mikipmax.repositorio.PacienteRepositorio;
+import com.mikipmax.repositorio.RepositorioBase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
-public class PacienteServicioImpl implements IPacienteServicio {
+public class PacienteServicioImpl extends ServicioBaseImpl<Paciente, Long> implements IPacienteServicio {
 
-    public final PacienteRepositorio pacienteRepositorio;
+    private final PacienteRepositorio pacienteRepositorio;
 
     @Override
-    public List<Paciente> listarTodos() throws Exception {
-        return pacienteRepositorio.findAll();
+    protected RepositorioBase<Paciente, Long> getRepositorioBase() {
+        return pacienteRepositorio;
     }
 }
